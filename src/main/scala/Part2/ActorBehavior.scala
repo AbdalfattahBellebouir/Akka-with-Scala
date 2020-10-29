@@ -1,5 +1,5 @@
 package Part2
 
-object ActorBehavior {
+object ActorBehavior extends App{
 
 }
