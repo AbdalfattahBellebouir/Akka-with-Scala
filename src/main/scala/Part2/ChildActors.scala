@@ -24,8 +24,8 @@ object ChildActors extends App {
     def hasWorkers(numberOfWorkers: Int,currentWorker: Int):Receive= {
       case message:String => {
         val worker = context.actorSelection(s"worker${currentWorker+1}")
-        context.become(hasWorkers(numberOfWorkers,(currentWorker+1)%numberOfWorkers))
         worker ! WordCountTask(message)
+        context.become(hasWorkers(numberOfWorkers,(currentWorker+1)%numberOfWorkers))
       }
       case WordCountReply(message,n) => {
         println(s"${sender().path.name} counted $n words in the message: $message")
