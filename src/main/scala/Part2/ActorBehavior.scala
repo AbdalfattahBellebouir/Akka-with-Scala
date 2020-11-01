@@ -33,7 +33,7 @@ object ActorBehavior extends App{
     override def receive: Receive = agg(Map[String,Int]())
 
 
-    
+
 
     def agg(m: Map[String,Int]):Receive ={
       case AggregatorVotes(s) => {
